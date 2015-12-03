@@ -4,21 +4,21 @@
 
 (function( $ ){
 	var defaults = {
-			  'userid'			 : '115528839112598673902',
-			  'albumid'			 : '5710317752556741025',
-			  'authkey' 		 : '',
-			  'imgmax'           : 460,
-			  'maxresults'		 : 100,
-			  'random'			 : true,
-			  'caption'			 : true,
-			  'albumlink'		 : true,
-			  'time'	 		 : 5000,
-			  'fadespeed'		 : 1000
+		'userid': '115528839112598673902',
+		'albumid': '5710317752556741025',
+		'authkey': '',
+		'imgmax': 460,
+		'maxresults': 100,
+		'random': true,
+		'caption': true,
+		'albumlink': true,
+		'time': 5000,
+		'fadespeed': 1000
 	};
-			
+
 	var methods = {
 		init: function (options) {
-		    var settings = $.extend({}, defaults, options);
+			var settings = $.extend({}, defaults, options);
 			this.data('googleslidesOptions', settings);
 			
 			if ($('.googleslides[albumid=' + settings.albumid +']').length > 0) {
@@ -28,22 +28,18 @@
 			}
 			else {
 				this.attr('albumid', settings.albumid);
-
-                var authKeyStr = '';
+				var authKeyStr = '';
 				if (settings.authkey != '') {
-                  authKeyStr = '&authkey=' + settings.authkey;
-                }
-
+					authKeyStr = '&authkey=' + settings.authkey;
+				}
 				var albumJsonUrl = '<script src="https://picasaweb.google.com/data/feed/base/user/' + settings.userid + '/albumid/' + settings.albumid 
 					+ '?alt=json&kind=photo&max-results=' + settings.maxresults + '&hl=en_US&imgmax=' + settings.imgmax  
 					+ authKeyStr
 					+ '&callback=jQuery.fn.googleslides.prepare_' + settings.albumid + '&fields=link,entry(link,media:group(media:content,media:description))">' 
-					+ '</sc' + 'ript>';
-				
+					+ '</sc' + 'ript>';				
 				var prepareFunCallback = 'jQuery.fn.googleslides.prepare_' + settings.albumid 
 					+ ' = function(data) { $(".googleslides[albumid=' + settings.albumid + ']").googleslides("prepare", data); };';
-				eval(prepareFunCallback);
-				
+				eval(prepareFunCallback);				
 				this.width(settings.imgmax);
 				this.addClass('googleslides');
 				$('body').append(albumJsonUrl);
@@ -114,18 +110,18 @@
 						first.appendTo(target);
 					})
 				})
-			 }, settings.time);
+			}, settings.time);
 		}
 	}
 
   $.fn.googleslides = function(method) {  
-		 // Method calling logic
+	// Method calling logic
 		if ( methods[method] ) {
-		  return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
 		} else if ( typeof method === 'object' || ! method ) {
-		  return methods.init.apply( this, arguments );
+			return methods.init.apply( this, arguments );
 		} else {
-		  $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
-		}    		
+			$.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
+		}
   };
 })( jQuery );

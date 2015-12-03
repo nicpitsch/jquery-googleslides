@@ -1,4 +1,4 @@
-.googleslides { padding: 3px; overflow:hidden; }
+.googleslides { padding: 0; overflow:hidden; }
 .googleslide  { display:none; position:relative; }
 .googleslide a:link { text-decoration:none; }
 .googleslide img {min-width: inherit; max-width:inherit;}
