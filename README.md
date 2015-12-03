@@ -1,3 +1,6 @@
+Forked from [bradyholt](https://github.com/bradyholt/jquery-googleslides) ([copyright](https://github.com/bradyholt/jquery-googleslides/blob/master/LICENSE))
+
+bradyholt:
 jQuery googleslides  
 ===================
 A jQuery plugin to display your Google+ Photos.
